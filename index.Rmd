@@ -1,7 +1,7 @@
 ---
 title: "PS270 Final Project"
 author: "Gideon Leshner"
-description: "My final project"
+description: "My Final Project"
 output:
   distill::distill_article:
     self_contained: false
@@ -9,6 +9,10 @@ output:
 
 
 
-## Project thoughts
+## Project Thoughts
 
 I am interested in exploring data related to either sports salaries or something related to different voting patterns and the changes over the years.
+
+## Final Project Milestone #2
+
+I'll look at trends of media political behavior over time using the "endorsements dataset", which includes newspaper presidential endorsements from different election years. My research question is: Do newspapers increasingly endorse the same party across consecutive elections? My hypothesis is that newspapers have been more consistent in their endorsements because they are  motivated to maintain stable political identities rather than changing parties frequently due to growing political polarization and higher audience expectations. In order to determine whether endorsement consistency varies over time, the primary explanatory variable is 'election year', which is defined as the year of each presidential election. In order to quantify the variation in media endorsement consistency across elections, I will also create a variable that indicates whether a newspaper endorsed the same party as it did in the previous election. The outcome variable is 'endorsement consistency', which is a binary indicator that is equal to 0 if a newspaper switches parties and 1 if it supports the same party as in the previous election. A positive correlation between election year and endorsement consistency, which indicates that newspapers become less likely to change parties over time, would be evidence in favor of my theory. If there is no trend or if newspapers are equally or more likely to switch endorsements in next elections than in previous ones, the hypothesis would be refuted.
