@@ -29,11 +29,9 @@ I'll look at trends of media political behavior over time using the "endorsement
 ```{r}
 library(tidyverse)
 library(ggplot2)
-
-endorsements <- read.csv("endorsements.csv")
 ```
 
-Data Cleaning and Adding a Variable
+## Data Cleaning and Adding a Variable
 ```{r}
 endorsements <- mutate(endorsements, 
                party_of_candidate = 
@@ -48,12 +46,13 @@ endorsements <- select(endorsements, publication,
 endorsements <- na.omit(endorsements)
 ```
 
-Data Visualization
+## Simple Data Visualization
 ```{r}
-ggplot(data, aes(x = factor(year), fill = endorsed)) +
+ggplot(endorsements, aes(x = factor(year), fill = party_of_candidate)) +
   geom_bar() +
   labs(title = "Endorsements by Year",
        x = "Year",
-       y = "Count")
+       y = "Count",
+       fill = "Political Party")
 ```
 
