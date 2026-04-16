@@ -49,10 +49,40 @@ endorsements <- na.omit(endorsements)
 ## Simple Data Visualization
 ```{r}
 ggplot(endorsements, aes(x = factor(year), fill = party_of_candidate)) +
-  geom_bar() +
+  geom_bar(position = "dodge") +
   labs(title = "Endorsements by Year",
        x = "Year",
        y = "Count",
        fill = "Political Party")
 ```
 
+## Final Project Milestone #4
+
+## Consistency Variable 
+```{r}
+endorsements <- endorsements |>
+  group_by(publication) |>
+  mutate(prop_dem = mean(party_of_candidate == "Democrat")) |>
+  mutate(consistency_status = if_else(prop_dem == 1 | prop_dem == 0, "Consistent", "Has Switched")) |>
+  ungroup() 
+
+consistency_trends <- endorsements |>
+  filter(consistency_status == "Consistent") |>
+  group_by(year) |>
+  summarize(consistent_count = n())
+consistency_trends
+```
+
+## Data Visualization
+```{r}
+ggplot(consistency_trends, aes(x = year, y = consistent_count)) +
+  geom_line() +
+  geom_point() +
+  labs(title = "Trend of Consistent Newspaper Endorsements",
+       x = "Election Year",
+       y = "Number of Consistent Publications")
+```
+
+
+## Analysis
+Consistency, in this dataset, is when a newspaper never switches political parties across all of the election cycles recorded in the dataset. Under this logic, a publication is labeled "Consistent" only if it has a 100% track record of endorsing either exclusively Democrats or Republicans. The data visualization indicates that the total number of consistent newspaper endorsements peaked around the year 2000 and has since had a significant decline. My hypothesis was that growing political polarization would lead to higher endorsement consistency, but the results actually show the opposite trend occurring recently. By 2020, the number of publications maintaining a consistent endorsement dropped to its lowest point since 1988, falling below 20 publications. This suggests that newspapers are either increasingly willing to switch their support between election cycles or, more likely given the current media landscape, they are no longer willing to make formal presidential endorsements. Therefore, the evidence does not support the theory that media outlets are maintaining stable political identities. Instead, the normally traditional model of consistent endorsements appears to be weakening in the last couple of years.
