@@ -1,37 +1,27 @@
 ---
-title: "PS270 Final Project"
+title: "My PS270 Final Project"
 author: "Gideon Leshner"
-description: "My Final Project"
+description: "Newspaper's Presidential Endorsements"
 output:
   distill::distill_article:
     self_contained: false
 ---
 
+# Introduction
+
+I'll look at trends of media political behavior over time using the "endorsements dataset", which includes newspaper presidential endorsements from different election years. My research question is: Do newspapers increasingly endorse the same party across consecutive elections? My hypothesis is that newspapers have been more consistent in their endorsements because they are  motivated to maintain stable political identities rather than changing parties frequently due to growing political polarization and higher audience expectations. In order to determine whether endorsement consistency varies over time, the primary explanatory variable is 'election year', which is defined as the year of each presidential election. In order to quantify the variation in media endorsement consistency across elections, I will also create a variable that indicates whether a newspaper endorsed the same party as it did in the previous election. The outcome variable is 'endorsement consistency', which is a binary indicator that is equal to 0 if a newspaper switches parties and 1 if it supports the same party as in the previous election. A positive correlation between election year and endorsement consistency, which indicates that newspapers become less likely to change parties over time, would be evidence in favor of my theory. If there is no trend or if newspapers are equally or more likely to switch endorsements in next elections than in previous ones, the hypothesis would be refuted.
 
 
-## Project Thoughts
+# Data
 
-I am interested in exploring data related to either sports salaries or something related to different voting patterns and the changes over the years.
-
-## Final Project Milestone #2
-
+### Load the Data
 ```{r}
 library(tidyverse)
 endorsements <- read_csv("endorsements.csv")
 glimpse(endorsements)
 ```
 
-
-I'll look at trends of media political behavior over time using the "endorsements dataset", which includes newspaper presidential endorsements from different election years. My research question is: Do newspapers increasingly endorse the same party across consecutive elections? My hypothesis is that newspapers have been more consistent in their endorsements because they are  motivated to maintain stable political identities rather than changing parties frequently due to growing political polarization and higher audience expectations. In order to determine whether endorsement consistency varies over time, the primary explanatory variable is 'election year', which is defined as the year of each presidential election. In order to quantify the variation in media endorsement consistency across elections, I will also create a variable that indicates whether a newspaper endorsed the same party as it did in the previous election. The outcome variable is 'endorsement consistency', which is a binary indicator that is equal to 0 if a newspaper switches parties and 1 if it supports the same party as in the previous election. A positive correlation between election year and endorsement consistency, which indicates that newspapers become less likely to change parties over time, would be evidence in favor of my theory. If there is no trend or if newspapers are equally or more likely to switch endorsements in next elections than in previous ones, the hypothesis would be refuted.
-
-## Final Project Milestone #3
-
-```{r}
-library(tidyverse)
-library(ggplot2)
-```
-
-## Data Cleaning and Adding a Variable
+### Data Cleaning and Adding a Variable
 ```{r}
 endorsements <- mutate(endorsements, 
                party_of_candidate = 
@@ -46,7 +36,8 @@ endorsements <- select(endorsements, publication,
 endorsements <- na.omit(endorsements)
 ```
 
-## Simple Data Visualization
+
+### Simple Data Visualization
 ```{r}
 ggplot(endorsements, aes(x = factor(year), fill = party_of_candidate)) +
   geom_bar(position = "dodge") +
@@ -56,10 +47,13 @@ ggplot(endorsements, aes(x = factor(year), fill = party_of_candidate)) +
        fill = "Political Party")
 ```
 
-## Final Project Milestone #4
 
-## Consistency Variable 
+# Results
+
+### Consistency Variable 
 ```{r}
+library(tidyverse)
+library(ggplot2)
 endorsements <- endorsements |>
   group_by(publication) |>
   mutate(prop_dem = mean(party_of_candidate == "Democrat")) |>
@@ -73,7 +67,7 @@ consistency_trends <- endorsements |>
 consistency_trends
 ```
 
-## Data Visualization
+### Data Visualization
 ```{r}
 ggplot(consistency_trends, aes(x = year, y = consistent_count)) +
   geom_line() +
@@ -83,6 +77,34 @@ ggplot(consistency_trends, aes(x = year, y = consistent_count)) +
        y = "Number of Consistent Publications")
 ```
 
-
-## Analysis
+### Analysis
 Consistency, in this dataset, is when a newspaper never switches political parties across all of the election cycles recorded in the dataset. Under this logic, a publication is labeled "Consistent" only if it has a 100% track record of endorsing either exclusively Democrats or Republicans. The data visualization indicates that the total number of consistent newspaper endorsements peaked around the year 2000 and has since had a significant decline. My hypothesis was that growing political polarization would lead to higher endorsement consistency, but the results actually show the opposite trend occurring recently. By 2020, the number of publications maintaining a consistent endorsement dropped to its lowest point since 1988, falling below 20 publications. This suggests that newspapers are either increasingly willing to switch their support between election cycles or, more likely given the current media landscape, they are no longer willing to make formal presidential endorsements. Therefore, the evidence does not support the theory that media outlets are maintaining stable political identities. Instead, the normally traditional model of consistent endorsements appears to be weakening in the last couple of years.
+
+### Regression Table
+```{r}
+endorsements <- endorsements |>
+  group_by(publication) |>
+  mutate(prop_dem = mean(party_of_candidate == "Democrat"),
+         consistent = if_else(prop_dem == 1 | prop_dem == 0, 1, 0)) 
+model <- lm(consistent ~ year, data = endorsements)
+summary(model)
+```
+```{r}
+library(knitr)
+
+table <- tibble(
+  Term = c("Intercept", "Year"),
+  Estimate = coef(model))
+
+knitr::kable(table, digits = 3)
+```
+
+### Interpretation
+The regression model show a small positive relationship between election year and endorsement consistency, with a coefficient of about 0.003, meaning that each additional election year is associated with roughly a 0.3 percentage point increase in the probability that a newspaper remains consistent. However, the effect is very small substantively. Finally, the p-value for the Year coefficient is 0.104, which is greater than 0.05, indicating that the relationship is not statistically significant. This means there is no strong evidence that endorsement consistency has changed over time, and the observed trend could be due to random chance. This relationship should not be interpreted as causal because the model does not control for other factors that could affect newspaper endorsements and their consistency, such as ownership or audience.
+
+
+# Conclusion
+
+### Final Conclusion
+Overall, the results do not support my hypothesis that newspapers have become more consistent in their endorsements over time. While the estimated relationship is slightly positive, it is not statistically significant and is substantively very small. One limitation of this analysis is that the measure of consistency is simplified and does not capture newspapers that stop making endorsements altogether. Additionally, the model only includes time as an explanatory variable, ignoring other factors such as newspaper ownership, audience, or regional political trends. These limitations can threaten inference and conclusions because confounding or not calculated variables could influence endorsement behavior. The analysis could be improved by collecting more detailed data on newspaper characteristics and modeling changes in endorsements more precisely over time.
+
