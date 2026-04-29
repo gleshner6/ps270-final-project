@@ -103,7 +103,7 @@ ggplot(consistency_trends, aes(x = year, y = consistent_count)) +
 ```
 
 Figure 3:
-This figure displays the number of newspapers that consistently endorsed the same party across all election years. The number of consistent newspapers peaks around 2000 and then declines over time. This indicates that fewer newspapers maintain the same political alignment in recent elections. Although Figure 2 shows a decline in always-consistent newspapers after 2000, the regression tests to follow will highlight the overall relationship between election year and consistency across the dataset. 
+This figure displays the number of newspapers that consistently endorsed the same party across all election years. The number of consistent newspapers peaks around 2000 and then declines over time. This indicates that fewer newspapers maintain the same political alignment in recent elections. Although Figure 3 shows a decline in always-consistent newspapers after 2000, the regression tests to follow will highlight the overall relationship between election year and consistency across the dataset. 
 
 ### Analysis
 
@@ -136,10 +136,9 @@ The regression model shows a small positive relationship between election year a
 Overall, the results do not support my hypothesis that newspapers have become more consistent in their endorsements over time. While the estimated relationship is slightly positive, it is not statistically significant and is substantively very small. One limitation of this analysis is that the measure of consistency is simplified and does not capture newspapers that stop making endorsements altogether. Another limitation is that newspapers with fewer recorded election years may appear more consistent simply because they had fewer chances to switch parties. Additionally, the model only includes time as an explanatory variable, ignoring other factors such as newspaper ownership, audience, or regional political trends. These limitations can threaten inference and conclusions because confounding or not calculated variables could influence endorsement behavior. The analysis could be improved by collecting more detailed data on newspaper characteristics and modeling changes in endorsements more precisely over time.
 
 # AI Disclosure
+I used AI tools to help create labels for my regression table and making it a nicely formatted table.
 
-I used AI tools to help clarify that my research question was aligned with the tables and visualizations I was making (it wasn't). I was producing results and not clarifying my always-consistent groups category. I was talking about previous elections and their consistency when I wanted to talk about all elections as a whole, if a newspaper was always consistent.
-
-I also used AI tools to help create labels for my regression table and making it a nicely formatted table.
+I also used AI tools to see if my labels were misleading, leading the viewer to perceive the visualizations were something they werent
 
 # Code
 

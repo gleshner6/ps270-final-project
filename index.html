@@ -1556,12 +1556,18 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
-<h3 id="simple-data-visualization-figure-1">Simple Data Visualization (Figure 1)</h3>
+<h3 id="data-visualization-figure-1">Data Visualization (Figure 1)</h3>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="index_files/figure-html5/unnamed-chunk-3-1.png" alt="" width="624" /></p>
 </div>
 <p>Figure 1:
 This figure shows the number of newspaper endorsements for Democratic and Republican candidates in each election year. Democratic endorsements generally increase over time, while Republican endorsements appear to decline in more recent elections. This suggests a shift in overall endorsement patterns across years.</p>
+<h3 id="data-visualization-figure-2">Data Visualization (Figure 2)</h3>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="index_files/figure-html5/unnamed-chunk-4-1.png" alt="" width="624" /></p>
+</div>
+<p>Figure 2:
+This figure shows the number of newspapers that consistently endorsed the same party across all elections compared to those that switched at least once. The majority of newspapers are not fully consistent, indicating that party switching is relatively common.</p>
 <h1 id="results">Results</h1>
 <h3 id="always-consistent-table">Always-Consistent Table</h3>
 <div class="layout-chunk" data-layout="l-body">
@@ -1612,12 +1618,12 @@ This figure shows the number of newspaper endorsements for Democratic and Republ
 </tbody>
 </table>
 </div>
-<h3 id="data-visualization-figure-2">Data Visualization (Figure 2)</h3>
+<h3 id="data-visualization-figure-3">Data Visualization (Figure 3)</h3>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="index_files/figure-html5/unnamed-chunk-5-1.png" alt="" width="624" /></p>
+<p><img src="index_files/figure-html5/unnamed-chunk-6-1.png" alt="" width="624" /></p>
 </div>
-<p>Figure 2:
-This figure displays the number of newspapers that consistently endorsed the same party across all election years. The number of consistent newspapers peaks around 2000 and then declines over time. This indicates that fewer newspapers maintain the same political alignment in recent elections. Although Figure 2 shows a decline in always-consistent newspapers after 2000, the regression tests to follow will highlight the overall relationship between election year and consistency across the dataset.</p>
+<p>Figure 3:
+This figure displays the number of newspapers that consistently endorsed the same party across all election years. The number of consistent newspapers peaks around 2000 and then declines over time. This indicates that fewer newspapers maintain the same political alignment in recent elections. Although Figure 3 shows a decline in always-consistent newspapers after 2000, the regression tests to follow will highlight the overall relationship between election year and consistency across the dataset.</p>
 <h3 id="analysis">Analysis</h3>
 <p>Consistency, in this dataset, is when a newspaper never switches political parties across all of the election cycles recorded in the dataset. Under this logic, a publication is labeled “Consistent” only if it has a 100% track record of endorsing either exclusively Democrats or Republicans. The data visualization indicates that the total number of consistent newspaper endorsements peaked around the year 2000 and has since had a significant decline. My hypothesis was that growing political polarization would lead to higher endorsement consistency, but the results actually show the opposite trend occurring recently. By 2020, the number of publications maintaining a consistent endorsement dropped to its lowest point since 1988, falling below 20 publications. This suggests that newspapers are either increasingly willing to switch their support or, more likely given the current media environment, they are no longer willing to make formal presidential endorsements. Therefore, the evidence does not support the theory that media outlets are maintaining stable political identities. Instead, the normally traditional model of consistent endorsements appears to be weakening in the last couple of years.</p>
 <h3 id="regression-table">Regression Table</h3>
@@ -1626,8 +1632,8 @@ This figure displays the number of newspapers that consistently endorsed the sam
 <thead>
 <tr class="header">
 <th style="text-align: left;">Term</th>
-<th style="text-align: right;">Estimate</th>
-<th style="text-align: right;">Std. Error</th>
+<th style="text-align: right;">Coefficient</th>
+<th style="text-align: right;">Standard Error</th>
 <th style="text-align: right;">t value</th>
 <th style="text-align: right;">p value</th>
 </tr>
@@ -1641,7 +1647,7 @@ This figure displays the number of newspapers that consistently endorsed the sam
 <td style="text-align: right;">0.129</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Year</td>
+<td style="text-align: left;">Election Year</td>
 <td style="text-align: right;">0.003</td>
 <td style="text-align: right;">0.002</td>
 <td style="text-align: right;">1.627</td>
@@ -1656,8 +1662,8 @@ This figure displays the number of newspapers that consistently endorsed the sam
 <h3 id="final-conclusion">Final Conclusion</h3>
 <p>Overall, the results do not support my hypothesis that newspapers have become more consistent in their endorsements over time. While the estimated relationship is slightly positive, it is not statistically significant and is substantively very small. One limitation of this analysis is that the measure of consistency is simplified and does not capture newspapers that stop making endorsements altogether. Another limitation is that newspapers with fewer recorded election years may appear more consistent simply because they had fewer chances to switch parties. Additionally, the model only includes time as an explanatory variable, ignoring other factors such as newspaper ownership, audience, or regional political trends. These limitations can threaten inference and conclusions because confounding or not calculated variables could influence endorsement behavior. The analysis could be improved by collecting more detailed data on newspaper characteristics and modeling changes in endorsements more precisely over time.</p>
 <h1 id="ai-disclosure">AI Disclosure</h1>
-<p>I used AI tools to help clarify that my research question was aligned with the tables and visualizations I was making (it wasn’t). I was producing results and not clarifying my always-consistent groups category. I was talking about previous elections and their consistency when I wanted to talk about all elections as a whole, if a newspaper was always consistent.</p>
-<p>I also used AI tools to help create labels for my regression table and making it a nicely formatted table.</p>
+<p>I used AI tools to help create labels for my regression table and making it a nicely formatted table.</p>
+<p>I also used AI tools to see if my labels were misleading, leading the viewer to perceive the visualizations were something they werent</p>
 <h1 id="code">Code</h1>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -1686,8 +1692,16 @@ This figure displays the number of newspapers that consistently endorsed the sam
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>prop_dem <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>party_of_candidate</span> <span class='op'>==</span> <span class='st'>"Democrat"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>consistency_status <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>prop_dem</span> <span class='op'>==</span> <span class='fl'>1</span> <span class='op'>|</span> <span class='va'>prop_dem</span> <span class='op'>==</span> <span class='fl'>0</span>, <span class='st'>"Consistent"</span>, <span class='st'>"Has Switched"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>consistent <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>consistency_status</span> <span class='op'>==</span> <span class='st'>"Consistent"</span>, <span class='fl'>1</span>, <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>ungroup</a></span><span class='op'>(</span><span class='op'>)</span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>ungroup</a></span><span class='op'>(</span><span class='op'>)</span></span>
 <span></span>
+<span><span class='va'>endorsements</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span><span class='op'>(</span><span class='va'>consistent</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>consistent</span><span class='op'>)</span>, y <span class='op'>=</span> <span class='va'>n</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span></span>
+<span>    x <span class='op'>=</span> <span class='st'>"Consistency"</span>,</span>
+<span>    y <span class='op'>=</span> <span class='st'>"Number of Newspapers"</span>,</span>
+<span>    title <span class='op'>=</span> <span class='st'>"Newspaper Endorsement Consistency"</span><span class='op'>)</span></span>
 <span><span class='va'>consistency_trends</span> <span class='op'>&lt;-</span> <span class='va'>endorsements</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>consistency_status</span> <span class='op'>==</span> <span class='st'>"Consistent"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/distinct.html'>distinct</a></span><span class='op'>(</span><span class='va'>publication</span>, <span class='va'>year</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
@@ -1708,13 +1722,13 @@ This figure displays the number of newspapers that consistently endorsed the sam
 <span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://broom.tidymodels.org/'>broom</a></span><span class='op'>)</span></span>
 <span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://yihui.org/knitr/'>knitr</a></span><span class='op'>)</span></span>
 <span></span>
-<span><span class='va'>model</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>consistent</span> <span class='op'>~</span> <span class='va'>year</span>, data <span class='op'>=</span> <span class='va'>endorsements</span><span class='op'>)</span></span>
+<span><span class='va'>reg_1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>consistent</span> <span class='op'>~</span> <span class='va'>year</span>, data <span class='op'>=</span> <span class='va'>endorsements</span><span class='op'>)</span></span>
 <span></span>
-<span><span class='fu'><a href='https://generics.r-lib.org/reference/tidy.html'>tidy</a></span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>term <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>term</span> <span class='op'>==</span> <span class='st'>"year"</span>, <span class='st'>"Year"</span>, <span class='st'>"Intercept"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span><span class='fu'><a href='https://generics.r-lib.org/reference/tidy.html'>tidy</a></span><span class='op'>(</span><span class='va'>reg_1</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>term <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>term</span> <span class='op'>==</span> <span class='st'>"year"</span>, <span class='st'>"Election Year"</span>, <span class='st'>"Intercept"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span></span>
 <span>    digits <span class='op'>=</span> <span class='fl'>3</span>,</span>
-<span>    col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Term"</span>, <span class='st'>"Estimate"</span>, <span class='st'>"Std. Error"</span>, <span class='st'>"t value"</span>, <span class='st'>"p value"</span><span class='op'>)</span></span>
+<span>    col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Term"</span>, <span class='st'>"Coefficient"</span>, <span class='st'>"Standard Error"</span>, <span class='st'>"t value"</span>, <span class='st'>"p value"</span><span class='op'>)</span></span>
 <span>  <span class='op'>)</span></span></code></pre>
 </div>
 </div>
