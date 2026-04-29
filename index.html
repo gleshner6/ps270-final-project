@@ -91,7 +91,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_meta_tags-->
   <title>Shifts in Newspaper Presidential Endorsements Over Time</title>
 
-  <meta property="description" itemprop="description" content="An analysis of whether U.S. media (newspapers in this case) have become more politically consistent across presidential elections"/>
+  <meta property="description" itemprop="description" content="An analysis of whether U.S newspapers have become more politically consistent across presidential elections, 1988-2020"/>
 
 
   <meta name="article:author" content="Gideon Leshner"/>
@@ -99,19 +99,19 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
   <meta property="og:title" content="Shifts in Newspaper Presidential Endorsements Over Time"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="An analysis of whether U.S. media (newspapers in this case) have become more politically consistent across presidential elections"/>
+  <meta property="og:description" content="An analysis of whether U.S newspapers have become more politically consistent across presidential elections, 1988-2020"/>
   <meta property="og:locale" content="en_US"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
   <meta property="twitter:title" content="Shifts in Newspaper Presidential Endorsements Over Time"/>
-  <meta property="twitter:description" content="An analysis of whether U.S. media (newspapers in this case) have become more politically consistent across presidential elections"/>
+  <meta property="twitter:description" content="An analysis of whether U.S newspapers have become more politically consistent across presidential elections, 1988-2020"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","author","description","output"]}},"value":[{"type":"character","attributes":{},"value":["Shifts in Newspaper Presidential Endorsements Over Time"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Gideon Leshner"]}]}]},{"type":"character","attributes":{},"value":["An analysis of whether U.S. media (newspapers in this case) have become more politically consistent across presidential elections"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","author","description","output"]}},"value":[{"type":"character","attributes":{},"value":["Shifts in Newspaper Presidential Endorsements Over Time"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Gideon Leshner"]}]}]},{"type":"character","attributes":{},"value":["An analysis of whether U.S newspapers have become more politically consistent across presidential elections, 1988-2020"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -1519,7 +1519,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Shifts in Newspaper Presidential Endorsements Over Time","description":"An analysis of whether U.S. media (newspapers in this case) have become more politically consistent across presidential elections","authors":[{"author":"Gideon Leshner","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}]}
+{"title":"Shifts in Newspaper Presidential Endorsements Over Time","description":"An analysis of whether U.S newspapers have become more politically consistent across presidential elections, 1988-2020","authors":[{"author":"Gideon Leshner","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1533,7 +1533,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p>An analysis of whether U.S. media (newspapers in this case) have become more politically consistent across presidential elections</p>
+<p>An analysis of whether U.S newspapers have become more politically consistent across presidential elections, 1988-2020</p>
 </div>
 
 <div class="d-byline">
@@ -1545,7 +1545,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 <div class="d-article">
 <h1 id="introduction">Introduction</h1>
-<p>I’ll look at trends of newspapers and political behavior over time using the “endorsements dataset”, which includes newspaper presidential endorsements from different election years. My research question is: Do newspapers always endorse the same parties across all elections? My hypothesis is that newspapers have been more consistent in their endorsements because they are motivated to maintain stable political identities rather than changing parties frequently due to growing political polarization and higher audience expectations. In order to determine whether endorsement consistency varies over time, the primary explanatory variable is ‘election year’, which is defined as the year of each presidential election. In order to quantify the variation in media endorsement consistency across elections, I will also create a variable that indicates whether a newspaper endorsed the same party across all elections in the dataset. The outcome variable is ‘endorsement consistency’, which is a binary indicator that is equal to 1 if a newspaper always endorsed the same party across the dataset and 0 if it switched parties at least once. A positive correlation between election year and endorsement consistency would indicate that newspapers appearing in later election years are more likely to belong to the always-consistent group. If there is no trend, the hypothesis would be refuted.</p>
+<p>In this project we will look at the trends of newspapers and political behavior over time using the “endorsements dataset”. This includes newspaper presidential endorsements from different election years. My research question for this project is: Do newspapers always endorse the same parties across all elections? My hypothesis is that newspapers have stayed consistent in their endorsements because they aim to maintain stable political identities, especially as political polarization increases and audience expectations grow.</p>
+<p>In order to determine whether endorsement consistency varies over time, the primary explanatory variable is ‘election year’, which is defined as the year of each presidential election. In order to quantify media endorsement consistency across elections, I will also create a variable that indicates whether a newspaper endorsed the same party across all elections in the dataset. The outcome variable is ‘endorsement consistency’, that is equal to 1 if a newspaper always endorsed the same party across the dataset and 0 if it switched parties at least once. A positive correlation between election year and endorsement consistency would indicate that newspapers appearing in later election years are more likely to belong to the always-consistent group. If there is no trend, the hypothesis would be refuted.</p>
 <h1 id="data">Data</h1>
 <h3 id="load-the-data">Load the Data</h3>
 <p>This project uses a cross-sectional design. The main outcome variable is endorsement consistency, which equals 1 if a newspaper endorsed only one political party across all of its recorded elections and 0 if it switched parties at least once. My hypothesis would be supported if endorsement consistency increased in later election years.</p>
@@ -1663,13 +1664,12 @@ This figure displays the number of newspapers that consistently endorsed the sam
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span></span>
 <span><span class='va'>endorsements</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"endorsements.csv"</span><span class='op'>)</span></span>
 <span><span class='va'>endorsements</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span><span class='va'>endorsements</span>, </span>
-<span>               party_of_candidate <span class='op'>=</span> </span>
-<span>                 <span class='fu'><a href='https://dplyr.tidyverse.org/reference/case_when.html'>case_when</a></span><span class='op'>(</span><span class='va'>endorsed</span> <span class='op'>==</span> <span class='st'>"Obama"</span> <span class='op'>|</span> <span class='va'>endorsed</span> <span class='op'>==</span> <span class='st'>"Biden"</span> <span class='op'>|</span> </span>
-<span>                    <span class='va'>endorsed</span> <span class='op'>==</span> <span class='st'>"Clinton"</span> <span class='op'>|</span> <span class='va'>endorsed</span> <span class='op'>==</span> <span class='st'>"Gore"</span> <span class='op'>|</span> </span>
-<span>                    <span class='va'>endorsed</span> <span class='op'>==</span> <span class='st'>"Kerry"</span> <span class='op'>~</span> <span class='st'>"Democrat"</span>,</span>
-<span>                    <span class='va'>endorsed</span> <span class='op'>==</span> <span class='st'>"Trump"</span> <span class='op'>|</span> <span class='va'>endorsed</span> <span class='op'>==</span> <span class='st'>"Romney"</span> <span class='op'>|</span> </span>
-<span>                    <span class='va'>endorsed</span> <span class='op'>==</span> <span class='st'>"McCain"</span> <span class='op'>|</span> <span class='va'>endorsed</span> <span class='op'>==</span> <span class='st'>"Bush"</span> <span class='op'>|</span> </span>
-<span>                    <span class='va'>endorsed</span> <span class='op'>==</span> <span class='st'>"Dole"</span> <span class='op'>~</span> <span class='st'>"Republican"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span>  party_of_candidate <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/case_when.html'>case_when</a></span><span class='op'>(</span><span class='va'>endorsed</span> <span class='op'>==</span> <span class='st'>"Trump"</span> <span class='op'>|</span> <span class='va'>endorsed</span> <span class='op'>==</span> <span class='st'>"Romney"</span> <span class='op'>|</span> </span>
+<span>                                 <span class='va'>endorsed</span> <span class='op'>==</span> <span class='st'>"McCain"</span> <span class='op'>|</span> <span class='va'>endorsed</span> <span class='op'>==</span> <span class='st'>"Bush"</span> <span class='op'>|</span> </span>
+<span>                                 <span class='va'>endorsed</span> <span class='op'>==</span> <span class='st'>"Dole"</span> <span class='op'>~</span> <span class='st'>"Republican"</span>,</span>
+<span>                                 <span class='va'>endorsed</span> <span class='op'>==</span> <span class='st'>"Obama"</span> <span class='op'>|</span> <span class='va'>endorsed</span> <span class='op'>==</span> <span class='st'>"Biden"</span> <span class='op'>|</span> </span>
+<span>                                 <span class='va'>endorsed</span> <span class='op'>==</span> <span class='st'>"Clinton"</span> <span class='op'>|</span> <span class='va'>endorsed</span> <span class='op'>==</span> <span class='st'>"Gore"</span> <span class='op'>|</span> </span>
+<span>                                 <span class='va'>endorsed</span> <span class='op'>==</span> <span class='st'>"Kerry"</span> <span class='op'>~</span> <span class='st'>"Democrat"</span><span class='op'>)</span><span class='op'>)</span></span>
 <span><span class='va'>endorsements</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>endorsements</span>, <span class='va'>publication</span>, </span>
 <span>                       <span class='va'>year</span>, <span class='va'>endorsed</span>, <span class='va'>party_of_candidate</span><span class='op'>)</span></span>
 <span><span class='va'>endorsements</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/na.fail.html'>na.omit</a></span><span class='op'>(</span><span class='va'>endorsements</span><span class='op'>)</span></span>
@@ -1678,7 +1678,8 @@ This figure displays the number of newspapers that consistently endorsed the sam
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Endorsements by Year"</span>,</span>
 <span>       x <span class='op'>=</span> <span class='st'>"Year"</span>,</span>
 <span>       y <span class='op'>=</span> <span class='st'>"Count"</span>,</span>
-<span>       fill <span class='op'>=</span> <span class='st'>"Political Party"</span><span class='op'>)</span></span>
+<span>       fill <span class='op'>=</span> <span class='st'>"Political Party"</span><span class='op'>)</span><span class='op'>+</span> </span>
+<span>    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_fill_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Democrat"</span> <span class='op'>=</span> <span class='st'>"blue"</span>, <span class='st'>"Republican"</span> <span class='op'>=</span> <span class='st'>"red"</span><span class='op'>)</span><span class='op'>)</span></span>
 <span><span class='va'>endorsements</span> <span class='op'>&lt;-</span> <span class='va'>endorsements</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span><span class='op'>(</span><span class='va'>publication</span>, <span class='va'>year</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>publication</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
